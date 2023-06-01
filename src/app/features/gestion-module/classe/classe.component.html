@@ -1,0 +1,97 @@
+<div class="row">
+  <div class="col-8">
+    <div class="card">
+      <div class="card-body">
+
+        <h4 class="card-title">Les classes</h4>
+        <p class="card-title-desc"></p>
+        <table class="table table-bordered  mt-2" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+          <thead>
+          <tr>
+            <th>Id</th>
+            <th>Libelle</th>
+            <th>Niveau</th>
+            <th>Filiere</th>
+            <th>Annee</th>
+            <th>Action</th>
+          </tr>
+          </thead>
+          <tbody>
+
+          <tr *ngFor="let classe of classes ">
+            <td>{{classe.id}}</td>
+            <td>{{classe.libelle}}</td>
+            <td>{{classe.niveau}}</td>
+            <td>{{classe.filiere}}</td>
+            <td>{{classe.anneeScolaire.annee}}</td>
+            <td>
+              <button type="button" class="btn btn-success btn-sm waves-effect waves-light" (click)="editerClasse(classe)">
+                <i class="mdi mdi-pencil-outline"></i>
+              </button>
+              <button type="button" class="btn btn-danger btn-sm waves-effect waves-light" (click)="supprimerClasse(classe)">
+                <i class="mdi mdi-trash-can-outline"></i>
+              </button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div> <!-- end col -->
+
+  <div class="col-4">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Ajouter Classe </h4>
+        <form #addClasseFrom="ngForm">
+          <div *ngIf="valideReq" class="alert alert-danger" role="alert">
+            Le champs est obligatoire
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Libelle</label>
+            <input type="text" class="form-control" name="libelle" [(ngModel)]="libelle" required>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Niveau</label>
+            <select class="form-control" name="niveau" [(ngModel)]="niveau" required>
+              <option value="">--Selectionner--</option>
+              <option *ngFor="let niveau of niveaux" [value]="niveau.libelle">{{niveau.libelle}}</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Filliere</label>
+            <select class="form-control" name="filliere" [(ngModel)]="filliere" required>
+              <option value="">--Selectionner--</option>
+              <option *ngFor="let filliere of fillieres" [value]="filliere.libelle">{{filliere.libelle}}</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Annee Scolaire</label>
+            <select class="form-control" name="annee" [(ngModel)]="annee" required>
+              <option value="">--Selectionner--</option>
+              <option *ngFor="let annee of annees" [value]="annee.id">{{annee.annee}}</option>
+            </select>
+          </div>
+
+          <div>
+            <div>
+              <button type="submit" [disabled]="! addClasseFrom.form.valid" (click)="ajouterClasse()" name="btn_save"
+                      class="btn btn-primary waves-effect waves-light me-1">
+                Ajouter
+              </button>
+              <button type="button" (click)="annuler()" class="btn btn-secondary waves-effect">
+                Annuler
+              </button>
+            </div>
+          </div>
+        </form>
+
+
+      </div>
+    </div>
+
+  </div>
+</div> <!-- end row -->

@@ -1,0 +1,66 @@
+<div class="row">
+  <div class="col-8">
+    <div class="card">
+      <div class="card-body">
+
+        <h4 class="card-title">Les semestres</h4>
+        <p class="card-title-desc"></p>
+
+        <table class="table table-bordered  mt-2" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+          <thead>
+          <tr>
+            <th>Id</th>
+            <th>Annee</th>
+          </tr>
+          </thead>
+          <tbody>
+
+          <tr *ngFor="let semestre of semestres ">
+            <td>{{semestre.id}}</td>
+            <td>{{semestre.nomSemestre}}</td>
+            <td>{{semestre.duree}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div> <!-- end col -->
+
+  <div class="col-4">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Ajouter semestre </h4>
+        <form #addAnneeFrom="ngForm">
+          <div *ngIf="valideReq" class="alert alert-danger" role="alert">
+            Le champs est obligatoire
+          </div>
+          <div class="mb-3">
+            <label for="nomSemestre" class="form-label">AnneeNom</label>
+            <input type="text" class="form-control" id="nomSemestre" name="nomSemestre" [(ngModel)]="nomSemestre"
+                   required>
+          </div>
+
+          <div class="mb-3">
+            <label for="duree" class="form-label">Duree</label>
+            <input type="text" class="form-control" id="duree" name="duree" [(ngModel)]="duree"
+                   required>
+          </div>
+          <div>
+            <div>
+              <button type="submit" [disabled]="! addAnneeFrom.form.valid" (click)="ajouterSemestre()" name="btn_save"
+                      class="btn btn-primary waves-effect waves-light me-1">
+                Ajouter
+              </button>
+              <button type="button" (click)="annuler()" class="btn btn-secondary waves-effect">
+                Annuler
+              </button>
+            </div>
+          </div>
+        </form>
+
+
+      </div>
+    </div>
+
+  </div>
+</div> <!-- end row -->

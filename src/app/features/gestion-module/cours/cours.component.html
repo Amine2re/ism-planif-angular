@@ -1,0 +1,100 @@
+<div class="row">
+  <div class="col-8">
+    <div class="card">
+      <div class="card-body">
+
+        <h4 class="card-title">Les Cours</h4>
+        <p class="card-title-desc"></p>
+        <table class="table table-bordered  mt-2" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+          <thead>
+          <tr>
+            <th>Id</th>
+            <th>Cours</th>
+            <th>Professeurs</th>
+            <th>nombre Heure Global</th>
+            <th>Modules</th>
+            <th>Classes</th>
+            <th>Action</th>
+          </tr>
+          </thead>
+          <tbody>
+
+          <tr *ngFor="let cours of courss ">
+            <td>{{cours.id}}</td>
+            <td>0</td>
+            <td>0</td>
+            <td>{{cours.nombreHeureGlobal}}</td>
+            <td>GLRS</td>
+            <td>
+              <button type="button" class="btn btn-success btn-sm waves-effect waves-light" (click)="editerCours(cours)">
+                <i class="mdi mdi-pencil-outline"></i>
+              </button>
+              <button type="button" class="btn btn-danger btn-sm waves-effect waves-light" (click)="supprimerCours(cours)">
+                <i class="mdi mdi-trash-can-outline"></i>
+              </button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div> <!-- end col -->
+
+  <div class="col-4">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Planifier un cours</h4>
+        <form #addClasseFrom="ngForm">
+          <div *ngIf="valideReq" class="alert alert-danger" role="alert">
+            Le champs est obligatoire
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Nombre Heure Global</label>
+            <input type="number" class="form-control" name="nombreHeureGlobal" [(ngModel)]="nombreHeureGlobal" required>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Professeur</label>
+            <select class="form-control" name="professeur" [(ngModel)]="professeur" required>
+              <option value="">--Selectionner--</option>
+              <option *ngFor="let professeur of professeurs" [value]="professeur.id">{{professeur.nom}} {{professeur.prenom}}</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Classe</label>
+            <select class="form-control" name="classe" [(ngModel)]="classe" required>
+              <option value="">--Selectionner--</option>
+              <option *ngFor="let classe of classes" [value]="classe.id">{{classe.libelle}}</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Module</label>
+            <select class="form-control" name="module" [(ngModel)]="modulee" required>
+              <option value="">--Selectionner--</option>
+              <option *ngFor="let module of modules" [value]="module.id">{{module.libelle}}</option>
+            </select>
+          </div>
+
+
+
+          <div>
+            <div>
+              <button type="submit" [disabled]="! addClasseFrom.form.valid" (click)="planifierCours()" name="btn_save"
+                      class="btn btn-primary waves-effect waves-light me-1">
+                Ajouter
+              </button>
+              <button type="button" (click)="annuler()" class="btn btn-secondary waves-effect">
+                Annuler
+              </button>
+            </div>
+          </div>
+        </form>
+
+
+      </div>
+    </div>
+
+  </div>
+</div> <!-- end row -->
