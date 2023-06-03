@@ -9,21 +9,21 @@ import { Observable } from 'rxjs';
 })
 export class AnneeService  extends ResourceService<AnneeModel>{
 
-  baseUrlAnneeScolaire = "";
-
   constructor(private http: HttpClient) {
     super(http);
-   // this.apiUrl = this.apiUrl + '/planification/annee-scolaire'
   }
-  /* anneeScolaires$ = this.getAll$();
 
-  addAnneeScolaire$ = (annee: AnneeModel) => this.create$(annee); */
 
   getAllAnneeScolaire():Observable<any>{
-    return this.http.get(this.apiUrl.concat("/planification/allAnneScolaire"));
+    let headers_value = this.constructHeader(this.getToken());
+    return this.http.get(this.apiUrl.concat("/planification/allAnneeScolaire"),{headers:headers_value});
   }
 
   addAnneeScolaire(anneeScolaire:any):Observable<any>{
-    return this.http.post(this.apiUrl.concat("/planification/annee-scolaire"),anneeScolaire);
+    console.log("token ..." , this.getToken());
+    let headers_value = this.constructHeader(this.getToken());
+    return this.http.post(this.apiUrl.concat("/planification/annee-scolaire"),anneeScolaire,{headers:headers_value});
   }
+
+  
 }
