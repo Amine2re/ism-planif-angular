@@ -4,6 +4,7 @@ import { map } from 'rxjs/operators';
 import {Injectable, OnInit} from "@angular/core";
 import {ResourceModel} from "../../data/types/resource.model";
 import {environment} from "../../../environments/environment";
+import { Router } from "@angular/router";
 
 
 @Injectable({

@@ -9,6 +9,6 @@ export class LoginLayoutComponent {
 
     constructor() {
       //redirect to /gestion
-       window.location.href = '/gestion';
+      // window.location.href = '/gestion';
     }
 }

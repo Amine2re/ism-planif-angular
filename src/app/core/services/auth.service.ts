@@ -4,36 +4,37 @@ import {finalize, tap} from 'rxjs';
 
 import {environment} from "../../../environments/environment";
 import {Router} from "@angular/router";
+import { ResourceService } from './resource.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
-  protected   apiUrl : string = environment.apiUrl;
+export class AuthService extends ResourceService<any>{
+  protected override   apiUrl : string = environment.apiUrl;
 
-
-
-  constructor(private http: HttpClient, private  router : Router) { }
+  constructor(private http:HttpClient,private router:Router){
+    super(http);
+  }
 
   login(email: string, password: string) {
-
+    return this.httpClient.post<any>(`${this.apiUrl}/auth/signin`, {email, password}).pipe(
+      tap(
+        next => {
+          console.log('next ...',next);
+          localStorage.setItem('access_token' , next.access_token);
+        }
+      )
+    );
 
   }
 
-  private setSession() {
-    // Set the time that the access token will expire moment
-    // const expiresAt =   moment().add(authResult.expires_in, 'second');
-    // localStorage.setItem('access_token', authResult.access_token);
-    // localStorage.setItem("expires_at", JSON.stringify(expiresAt.valueOf()) );
-
-  }
 
   clearLocalStorage() {
     localStorage.clear();
   }
 
   logout() {
-    this.http
+    this.httpClient
       .post<unknown>(`${this.apiUrl}/auth/logout`, {})
       .pipe(
         finalize(() => {
@@ -45,7 +46,7 @@ export class AuthService {
   }
 
   public isLoggedIn() {
-    //return moment().isBefore(this.getExpiration()) && localStorage.getItem('access_token') != null;
+    return localStorage.getItem('access_token') != null;
   }
 
   isLoggedOut() {
@@ -57,7 +58,4 @@ export class AuthService {
     // const expiresAt = JSON.parse(expiration!);
     // return moment(expiresAt);
   }
-
-
-
 }
