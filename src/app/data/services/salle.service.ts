@@ -12,7 +12,7 @@ export class SalleService  extends ResourceService<SalleModel>{
     super(http);
     this.apiUrl = this.apiUrl + '/planification/salles'
   }
-  salles$ = this.getAllByUrl$('http://localhost:8080/api/planification/salles');
+  salles$ = this.getAllByUrl$('http://localhost:8080/api/planification/allSalles');
 
   addSalle$ = (salle: SalleModel) => this.create$(salle);
 }

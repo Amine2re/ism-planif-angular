@@ -8,13 +8,13 @@ import {SemestreService} from "../../../data/services/semestre.service";
   styleUrls: ['./semestre.component.css']
 })
 export class SemestreComponent {
-  semestres: SemestreModel[] = [];
+  semestres: any;
   valideReq: any;
   nomSemestre: any;
   duree: any;
 
   constructor(private semestreService: SemestreService) {
- this.semestresList();
+  this.semestresList();
   }
 
   annuler() {
@@ -41,7 +41,7 @@ export class SemestreComponent {
   }
 
   semestresList() {
-    this.semestreService.semestres$.subscribe((semestres) => {
+    this.semestreService.getAllSemestre().subscribe((semestres) => {
         this.semestres = semestres;
       }
     );
