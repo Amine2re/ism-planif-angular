@@ -13,11 +13,17 @@ export class SemestreService  extends ResourceService<SemestreModel>{
     super(http);
   //  this.apiUrl = this.apiUrl + '/planification/semestres/'
   }
-  semestres$ = this.getAllByUrl$("http://localhost:8080/api/planification/semestres");
+  semestres$ = this.getAllByUrl$("http://localhost:8080/api/planification/allSemestre");
 
-  addSemestre$ = (semestre: SemestreModel) => this.create$(semestre);
+  
+//  addSemestre$ = (semestre: SemestreModel) => this.create$(semestre);
 
   getAllSemestre(): Observable<SemestreModel>{
     return this.http.get(this.apiUrl.concat("/planification/allSemestre"));
+  }
+
+  addSemestre(semestre:SemestreModel):Observable<SemestreModel>{
+    console.log("semestre ___ ",semestre);
+    return this.http.post(this.apiUrl.concat("/planification/semestre"),semestre);
   }
 }

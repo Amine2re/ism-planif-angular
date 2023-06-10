@@ -10,15 +10,15 @@
           <thead>
           <tr>
             <th>Id</th>
-            <th>Annee</th>
+            <th>Numero Semestre</th>
           </tr>
           </thead>
           <tbody>
 
           <tr *ngFor="let semestre of semestres ">
             <td>{{semestre.id}}</td>
-            <td>{{semestre.nomSemestre}}</td>
-            <td>{{semestre.duree}}</td>
+            <td>{{semestre.numero}}</td>
+            <!-- <td>{{semestre.duree}}</td> -->
           </tr>
           </tbody>
         </table>
@@ -35,8 +35,8 @@
             Le champs est obligatoire
           </div>
           <div class="mb-3">
-            <label for="nomSemestre" class="form-label">AnneeNom</label>
-            <input type="text" class="form-control" id="nomSemestre" name="nomSemestre" [(ngModel)]="nomSemestre"
+            <label for="numeroSemestre" class="form-label">Numero Semestre</label>
+            <input type="text" class="form-control" id="numeroSemestre" name="numeroSemestre" [(ngModel)]="numeroSemestre"
                    required>
           </div>
 

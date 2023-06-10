@@ -22,7 +22,7 @@ export abstract class ResourceService<T extends  ResourceModel<T>>{
    return this.token;
   }
 
-  create$ = (resource: T): Observable<T> => this.httpClient.post<T>(this.apiUrl, resource);
+  create$ = (resource: T): Observable<T> => this.httpClient.post<T>(this.apiUrl.concat("/planification/semestre"), resource);
 
   getById$  = (id: number): Observable<T> => this.httpClient.get<T>(`${this.apiUrl}/${id}`);
 

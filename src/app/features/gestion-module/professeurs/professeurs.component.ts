@@ -54,7 +54,7 @@ export class ProfesseursComponent {
       specialite: this.specialite,
       grade: this.grade
     };
-    this.professeurService.addProfesseurs$(professeur).subscribe(
+    this.professeurService.addProfesseur(professeur).subscribe(
       (professeur) => {
         this.professeurs.push(professeur);
         this.nom = '';

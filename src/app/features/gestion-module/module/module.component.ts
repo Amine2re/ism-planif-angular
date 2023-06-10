@@ -28,7 +28,7 @@ export class ModuleComponent {
     }
     this.valideReq = false;
     //ajouter
-    this.modulesService.addModule$({libelle: this.libelle}).subscribe((module) => {
+    this.modulesService.addModule({libelle: this.libelle}).subscribe((module) => {
       this.modules.push(module);
       this.libelle = "";
 

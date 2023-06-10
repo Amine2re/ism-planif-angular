@@ -10,8 +10,11 @@ import {SemestreService} from "../../../data/services/semestre.service";
 export class SemestreComponent {
   semestres: any;
   valideReq: any;
-  nomSemestre: any;
+  numeroSemestre!: string;
   duree: any;
+  annee: any;
+  numero:any;
+
 
   constructor(private semestreService: SemestreService) {
   this.semestresList();
@@ -23,18 +26,21 @@ export class SemestreComponent {
 
   ajouterSemestre() {
     //validation
-    if (this.nomSemestre == null || this.duree == null) {
+    if (this.numeroSemestre == null || this.duree == null) {
       this.valideReq = true;
     }
     else {
       this.valideReq = false;
       let semestre: SemestreModel = {
-        nomSemestre: this.nomSemestre,
-        duree: this.duree
+        numero: this.numeroSemestre,
+        anneeScolaire:null,
+        cours: null
       };
-      this.semestreService.addSemestre$(semestre).subscribe((semestre) => {
+      this.semestreService.addSemestre(semestre).subscribe((semestre) => {
+        console.log("semestre recu__",semestre);
         this.semestres.push(semestre);
-        this.nomSemestre = '';
+        this.annee = semestre.anneeScolaire;
+        this.numero = semestre.numero;
         this.duree = '';
       });
     }

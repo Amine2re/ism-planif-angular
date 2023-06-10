@@ -23,6 +23,6 @@ export class ClasseService  extends ResourceService<ClasseModel>{
 
   ajoutClasse(classe:ClasseModel){
     console.log("classe___",classe);      
-    return this.http.post(this.apiUrl.concat("/planification/classe"),classe,{headers:this.constructHeader(this.getToken())});
+    return this.http.post(this.apiUrl.concat("/planification/classe"),classe);
   }
 }

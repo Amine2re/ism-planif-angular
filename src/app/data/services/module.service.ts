@@ -13,7 +13,14 @@ export class ModulesService  extends ResourceService<ModuleModel>{
     super(http);
     this.apiUrl = this.apiUrl + '/planification/modules'
   }
-  modules$ = this.getAllByUrl$("http://localhost:8080/api/planification/modules");
+  modules$ = this.getAllByUrl$("http://localhost:8080/api/planification/allModules");
 
   addModule$ =  (module: ModuleModel) => this.create$(module);
+  addModule(module:ModuleModel){
+    return this.httpClient.post("http://localhost:8080/api/planification/module",module);
+  }
+
+  /* loadModules():{
+    return this.httpClient.get();
+  } */
 }

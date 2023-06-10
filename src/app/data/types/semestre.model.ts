@@ -1,5 +1,8 @@
+import { CoursModel } from "./cours.model";
+
 export  interface SemestreModel{
     id?: number;
-    duree?: string;
-  nomSemestre?: string;
+    numero?: string;
+    anneeScolaire?: any;
+    cours?:CoursModel |any
 }

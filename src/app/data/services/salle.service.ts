@@ -15,4 +15,9 @@ export class SalleService  extends ResourceService<SalleModel>{
   salles$ = this.getAllByUrl$('http://localhost:8080/api/planification/allSalles');
 
   addSalle$ = (salle: SalleModel) => this.create$(salle);
+
+  addSalle(salle:SalleModel){
+    console.log("prepare post salle = ", salle);
+    return this.http.post('http://localhost:8080/api/planification/salle',salle);
+  }
 }

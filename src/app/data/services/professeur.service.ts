@@ -16,5 +16,8 @@ export class ProfesseurService  extends ResourceService<ProfesseurModel>{
   }
     professeurs$ = this.getAllByUrl$('http://localhost:8080/api/planification/allProfesseurs');
 
-  addProfesseurs$ = (professeur: ProfesseurModel) => this.create$(professeur);
+  //addProfesseurs$ = (professeur: ProfesseurModel) => this.create$(professeur);
+  addProfesseur(prof:ProfesseurModel){
+    return this.httpClient.post('http://localhost:8080/api/planification/professeur',prof);
+  }
 }

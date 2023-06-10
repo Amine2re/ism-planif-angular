@@ -37,9 +37,10 @@ export class SalleComponent {
       const salle = {
         numero: this.numero,
         nom: this.nom,
-        nombrePlaces: this.nombre_places
+        nombreDePlaces: this.nombre_places
       }
-      this.salleService.create$(salle).subscribe((data: any) => {
+      this.salleService.addSalle(salle).subscribe((data: any) => {
+        console.log("salle created ... ",data);
           this.sallesList();
           //reset
           this.numero = "";
@@ -52,12 +53,13 @@ export class SalleComponent {
         }
       );
     }
-    this.valideReq = true;
+    this.valideReq = false;
   }
 
   sallesList() {
 
     this.salleService.salles$.subscribe((data: any) => {
+
         this.salles = data;
       },
       (error: any) => {

@@ -13,7 +13,7 @@
             <th>Professeurs</th>
             <th>nombre Heure Global</th>
             <th>Modules</th>
-            <th>Classes</th>
+           <!--  <th>Classes</th> -->
             <th>Action</th>
           </tr>
           </thead>
@@ -21,10 +21,10 @@
 
           <tr *ngFor="let cours of courss ">
             <td>{{cours.id}}</td>
-            <td>0</td>
-            <td>0</td>
-            <td>{{cours.nombreHeureGlobal}}</td>
-            <td>GLRS</td>
+            <td>{{sizeCours}}</td>
+            <td>{{sizeProf}}</td>
+            <td>{{cours.nombreHeuresGlobal}}</td>
+            <td>{{cours.module.libelle}}</td>
             <td>
               <button type="button" class="btn btn-success btn-sm waves-effect waves-light" (click)="editerCours(cours)">
                 <i class="mdi mdi-pencil-outline"></i>
@@ -50,7 +50,7 @@
           </div>
           <div class="mb-3">
             <label class="form-label">Nombre Heure Global</label>
-            <input type="number" class="form-control" name="nombreHeureGlobal" [(ngModel)]="nombreHeureGlobal" required>
+            <input type="number" class="form-control" name="nombreHeuresGlobal" [(ngModel)]="nombreHeuresGlobal" required>
           </div>
 
           <div class="mb-3">
@@ -61,11 +61,18 @@
             </select>
           </div>
 
-          <div class="mb-3">
+       <!--    <div class="mb-3">
             <label class="form-label">Classe</label>
             <select class="form-control" name="classe" [(ngModel)]="classe" required>
               <option value="">--Selectionner--</option>
               <option *ngFor="let classe of classes" [value]="classe.id">{{classe.libelle}}</option>
+            </select>
+          </div> -->
+          <div class="mb-3">
+            <label class="form-label">Semestre</label>
+            <select class="form-control" name="semestre" [(ngModel)]="semestre" required>
+              <option value="">--Selectionner--</option>
+              <option *ngFor="let semestre of semestres" [value]="semestre.id">{{semestre.numero}}</option>
             </select>
           </div>
 

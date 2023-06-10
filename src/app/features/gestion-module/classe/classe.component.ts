@@ -72,7 +72,7 @@ export class ClasseComponent {
 
   construcClasse(anneeScolaire:AnneeModel|undefined  ):ClasseModel{
       return {libelle: this.libelle,
-        annee_scolaire_id: this.annee,
+       // annee_scolaire_id: this.annee,
         anneeScolaire: anneeScolaire,
         filiere: this.filliere,
         niveau: this.niveau}
@@ -111,6 +111,7 @@ export class ClasseComponent {
 
   classesList() {
     this.classeService.getAllClasses().subscribe((data: any) => {
+      console.log("data found ___",data);
       this.classes = data;
     }, (error: any) => {
       console.log(error);
