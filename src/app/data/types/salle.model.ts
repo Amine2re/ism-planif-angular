@@ -1,6 +1,6 @@
 export interface SalleModel {
   id?: number;
-  nombreDePlaces: number;
+  nombrePlaces: number;
   numero: number;
   nom: string;
 }

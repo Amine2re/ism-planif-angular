@@ -135,7 +135,7 @@ semestre: any;
       this.modules = data;
     });
 
-    this.semestreService.semestres$.subscribe((data) => {
+    this.semestreService.getAllSemestre().subscribe((data:any) => {
       console.log("data from semestre __",data);
 
       this.semestres = data;

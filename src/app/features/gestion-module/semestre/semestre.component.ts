@@ -14,6 +14,8 @@ export class SemestreComponent {
   duree: any;
   annee: any;
   numero:any;
+  nomSemestre:any;
+
 
 
   constructor(private semestreService: SemestreService) {
@@ -33,6 +35,8 @@ export class SemestreComponent {
       this.valideReq = false;
       let semestre: SemestreModel = {
         numero: this.numeroSemestre,
+        nomSemestre:this.nomSemestre,
+        duree:this.duree,
         anneeScolaire:null,
         cours: null
       };
@@ -48,6 +52,8 @@ export class SemestreComponent {
 
   semestresList() {
     this.semestreService.getAllSemestre().subscribe((semestres) => {
+      console.log("semestre recu__",semestres);
+
         this.semestres = semestres;
       }
     );

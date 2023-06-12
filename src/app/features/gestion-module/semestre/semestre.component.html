@@ -10,15 +10,16 @@
           <thead>
           <tr>
             <th>Id</th>
-            <th>Numero Semestre</th>
+            <th>Nom Semestre</th>
+            <th>Duree Semestre</th>
           </tr>
           </thead>
           <tbody>
 
           <tr *ngFor="let semestre of semestres ">
             <td>{{semestre.id}}</td>
-            <td>{{semestre.numero}}</td>
-            <!-- <td>{{semestre.duree}}</td> -->
+            <td>{{semestre.nomSemestre}}</td>
+            <td>{{semestre.duree}}</td>
           </tr>
           </tbody>
         </table>
@@ -39,7 +40,10 @@
             <input type="text" class="form-control" id="numeroSemestre" name="numeroSemestre" [(ngModel)]="numeroSemestre"
                    required>
           </div>
-
+          <div class="mb-3">
+            <label for="nomSemestre" class="form-label">Nom Semestre</label>
+            <input type="text" class="form-control" id="nomSemestre" name="nomSemestre" [(ngModel)]="nomSemestre" required>
+          </div>
           <div class="mb-3">
             <label for="duree" class="form-label">Duree</label>
             <input type="text" class="form-control" id="duree" name="duree" [(ngModel)]="duree"

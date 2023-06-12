@@ -10,7 +10,7 @@
           <tr>
             <th>Id</th>
             <th>Cours</th>
-            <th>Professeurs</th>
+            <th>Nombre Professeurs</th>
             <th>nombre Heure Global</th>
             <th>Modules</th>
            <!--  <th>Classes</th> -->
@@ -23,8 +23,8 @@
             <td>{{cours.id}}</td>
             <td>{{sizeCours}}</td>
             <td>{{sizeProf}}</td>
-            <td>{{cours.nombreHeuresGlobal}}</td>
-            <td>{{cours.module.libelle}}</td>
+            <td>{{cours.nombreHeureGlobal}}</td>
+            <!-- <td>{{cours.module.libelle}}</td> -->
             <td>
               <button type="button" class="btn btn-success btn-sm waves-effect waves-light" (click)="editerCours(cours)">
                 <i class="mdi mdi-pencil-outline"></i>
@@ -72,7 +72,7 @@
             <label class="form-label">Semestre</label>
             <select class="form-control" name="semestre" [(ngModel)]="semestre" required>
               <option value="">--Selectionner--</option>
-              <option *ngFor="let semestre of semestres" [value]="semestre.id">{{semestre.numero}}</option>
+              <option *ngFor="let semestre of semestres" [value]="semestre.id">{{semestre.nomSemestre}}</option>
             </select>
           </div>
 

@@ -37,7 +37,7 @@ export class SalleComponent {
       const salle = {
         numero: this.numero,
         nom: this.nom,
-        nombreDePlaces: this.nombre_places
+        nombrePlaces: this.nombre_places
       }
       this.salleService.addSalle(salle).subscribe((data: any) => {
         console.log("salle created ... ",data);
