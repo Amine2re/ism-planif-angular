@@ -15,14 +15,11 @@ export class AnneeService  extends ResourceService<AnneeModel>{
 
 
   getAllAnneeScolaire():Observable<any>{
-    let headers_value = this.constructHeader(this.getToken());
-    return this.http.get(this.apiUrl.concat("/planification/allAnneeScolaire"),{headers:headers_value});
+    return this.http.get(this.apiUrl.concat("/planification/allAnneeScolaire"));
   }
 
   addAnneeScolaire(anneeScolaire:any):Observable<any>{
-    console.log("token ..." , this.getToken());
-    let headers_value = this.constructHeader(this.getToken());
-    return this.http.post(this.apiUrl.concat("/planification/annee-scolaire"),anneeScolaire,{headers:headers_value});
+    return this.http.post(this.apiUrl.concat("/planification/annee-scolaire"),anneeScolaire);
   }
 
   

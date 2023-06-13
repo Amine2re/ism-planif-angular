@@ -18,9 +18,10 @@ export class LoginPageComponent {
   }
 
   ngOnInit(): void {
-    if(this.authService.isLoggedIn()){
+    //if(this.authService.isLoggedIn()){
       this.router.navigateByUrl("/gestion");
-    }
+      
+   // }
   }
 
   onFormSubmit() {

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -9,6 +9,7 @@ import { SidebarComponent } from './layout/sidebar/sidebar.component';
 import { LoginLayoutComponent } from './layout/login-layout/login-layout.component';
 import { GestionLayoutComponent } from './layout/gestion-layout/gestion-layout.component';
 import {HttpClientModule} from "@angular/common/http";
+import { httpInterceptorProviders } from './consts';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,10 @@ import {HttpClientModule} from "@angular/common/http";
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    { provide: LOCALE_ID, useValue: 'fr-FR' },
+    httpInterceptorProviders
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
