@@ -29,6 +29,8 @@ export class CoursComponent {
   sizeCours: any;
   indexClasse: any;
   indexSemestre: any;
+  sizeModule: number | undefined;
+
 
 semestre: any;
 
@@ -132,10 +134,11 @@ semestre: any;
       this.sizeCours = data.length;
     });
     this.moduleService.modules$.subscribe((data) => {
+      this.sizeModule  = data.length;
       this.modules = data;
     });
 
-    this.semestreService.getAllSemestre().subscribe((data:any) => {
+    this.semestreService.semestres$.subscribe((data:any) => {
       console.log("data from semestre __",data);
 
       this.semestres = data;

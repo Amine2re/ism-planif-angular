@@ -51,7 +51,7 @@ export class SemestreComponent {
   }
 
   semestresList() {
-    this.semestreService.getAllSemestre().subscribe((semestres) => {
+    this.semestreService.semestres$.subscribe((semestres) => {
       console.log("semestre recu__",semestres);
 
         this.semestres = semestres;

@@ -10,7 +10,7 @@ import { AuthService } from 'src/app/core/services/auth.service';
 export class LoginPageComponent {
 
   model: any = {
-    login: '',
+    username: '',
     password: ''
   };
   constructor(private authService: AuthService, private route: ActivatedRoute,
@@ -18,20 +18,20 @@ export class LoginPageComponent {
   }
 
   ngOnInit(): void {
-    //if(this.authService.isLoggedIn()){
+    if(this.authService.isLoggedIn()){
       this.router.navigateByUrl("/gestion");
       
-   // }
+    }
   }
 
   onFormSubmit() {
     console.log("onFormSubmit ...")
-    console.log("this.model.login ...",this.model.login);
+    console.log("this.model.login ...",this.model.username);
     console.log("this.model.password ...",this.model.password);
 
 
-    alert("onSubmit");
-    this.authService.login(this.model.login, this.model.password).subscribe(
+    //alert("onSubmit");
+    this.authService.login(this.model.username, this.model.password).subscribe(
       {
         next: (res) => {
           //return url in angular

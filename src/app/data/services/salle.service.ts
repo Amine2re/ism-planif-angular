@@ -10,7 +10,7 @@ export class SalleService  extends ResourceService<SalleModel>{
 
   constructor(private http: HttpClient) {
     super(http);
-    this.apiUrl = this.apiUrl + '/planification/salles'
+    //this.apiUrl = this.apiUrl + '/planification/salles'
   }
   salles$ = this.getAllByUrl$('http://localhost:8080/api/planification/allSalles');
 
@@ -19,5 +19,9 @@ export class SalleService  extends ResourceService<SalleModel>{
   addSalle(salle:SalleModel){
     console.log("prepare post salle = ", salle);
     return this.http.post('http://localhost:8080/api/planification/salle',salle);
+  }
+
+  getAllSalle(){
+    return this.http.get("http://localhost:8080/api/planification/allSalles");
   }
 }

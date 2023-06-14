@@ -105,7 +105,7 @@ export class ClasseComponent {
       this.annees = data;
     }, (error: any) => {
       console.log(error);
-      alert("Erreur lors du chargement des données")
+      //alert("Erreur lors du chargement des données")
     });
   }
 
@@ -115,7 +115,7 @@ export class ClasseComponent {
       this.classes = data;
     }, (error: any) => {
       console.log(error);
-      alert("Erreur lors du chargement des données")
+     // alert("Erreur lors du chargement des données")
     });
   }
 

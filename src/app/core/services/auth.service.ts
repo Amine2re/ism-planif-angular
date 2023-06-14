@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {finalize, tap} from 'rxjs';
+import { tap} from 'rxjs';
 
 import {environment} from "../../../environments/environment";
 import {Router} from "@angular/router";
@@ -14,18 +14,22 @@ export class AuthService extends ResourceService<any>{
 
   constructor(private http:HttpClient,private router:Router){
     super(http);
+   // this.clearLocalStorage();
   }
 
-  login(email: string, password: string) {
-    return this.httpClient.post<any>(`${this.apiUrl}/auth/signin`, {email, password}).pipe(
+  login(username: string, password: string) {
+    return this.http.post<any>("http://localhost:8080/auth/login", {username, password}).pipe(
       tap(
         next => {
           console.log('next ...',next);
-          localStorage.setItem('access_token' , next.accessToken);
+          localStorage.setItem('access_token' , next.access_token);
         }
       )
     );
+  }
 
+  login_(username: string, password: string){
+    return this.http.post("http://localhost:8080/auth/login",{"username":username,"password":password})
   }
 
 
@@ -34,15 +38,15 @@ export class AuthService extends ResourceService<any>{
   }
 
   logout() {
-    this.httpClient
+    /* this.httpClient
       .post<unknown>(`${this.apiUrl}/auth/logout`, {})
       .pipe(
-        finalize(() => {
+         --//finalize(() => {*/
           this.clearLocalStorage();
           // this.stopTokenTimer();
           this.router.navigate(['/']);
-        })
-      ).subscribe();
+       // })
+      //).subscribe();
   }
 
   public isLoggedIn() {

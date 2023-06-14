@@ -34,11 +34,7 @@ export abstract class ResourceService<T extends  ResourceModel<T>>{
 
   delete$ = (id: number): Observable<any> => this.httpClient.delete<any>(`${this.apiUrl}/${id}`);
 
-  constructHeader(token:any):any{
-    return   {
-      Authorization: "Bearer ".concat(token)
-    }
-  }
+
 
 
 }

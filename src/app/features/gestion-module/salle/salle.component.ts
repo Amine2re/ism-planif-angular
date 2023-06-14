@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {AfterViewInit, Component} from '@angular/core';
 import {SalleModel} from "../../../data/types/salle.model";
 import {SalleService} from "../../../data/services/salle.service";
 
@@ -7,7 +7,7 @@ import {SalleService} from "../../../data/services/salle.service";
   templateUrl: './salle.component.html',
   styleUrls: ['./salle.component.css']
 })
-export class SalleComponent {
+export class SalleComponent implements AfterViewInit{
   valideReq: any;
   nombre_places: any;
   numero: any;
@@ -15,8 +15,16 @@ export class SalleComponent {
   salles: SalleModel[] = [];
 
   constructor(private salleService: SalleService) {
+  }
+
+
+  ngAfterViewInit(): void {
     this.sallesList();
   }
+
+  //ngAfterViewInit(){
+  //  
+//}
 
   editerSalle(salle: any) {
 
@@ -56,12 +64,10 @@ export class SalleComponent {
     this.valideReq = false;
   }
 
-  sallesList() {
-
-    this.salleService.salles$.subscribe((data: any) => {
-
+   sallesList() {
+     this.salleService.getAllSalle().subscribe((data: any) => {
         this.salles = data;
-      },
+      },  
       (error: any) => {
         console.log(error);
       });

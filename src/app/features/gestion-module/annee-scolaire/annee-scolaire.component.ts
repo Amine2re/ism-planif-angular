@@ -42,7 +42,7 @@ export class AnneeScolaireComponent {
       this.anneeScolaires = data;
     }, (error: any) => {
       console.log(error);
-      alert("Erreur lors du chargement des données")
+     // alert("Erreur lors du chargement des données")
     });
   }
 
@@ -54,7 +54,7 @@ export class AnneeScolaireComponent {
         this.anneeScolairesList();
       }, (error: any) => {
         console.log(error);
-        alert("Erreur lors de l'ajout de l'année scolaire")
+       // alert("Erreur lors de l'ajout de l'année scolaire")
       });
     } else {
       this.valideReq = true;
