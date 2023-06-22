@@ -10,6 +10,22 @@
       "sourceRoot": "src",
       "prefix": "app",
       "architect": {
+          "serve": {
+            "builder": "@angular-devkit/build-angular:dev-server",
+            "defaultConfiguration": "development",
+            "configurations": {
+              "production": {
+                "browserTarget": "ism-planif:build:production"
+              },
+              "development": {
+                "browserTarget": "ism-planif:build:development"
+              }
+            },
+            "options": {
+              "browserTarget": "your-application-name:build",
+              "proxyConfig": "src/proxy.conf.json"
+            }
+          },
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
@@ -67,18 +83,6 @@
             }
           },
           "defaultConfiguration": "production"
-        },
-        "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "configurations": {
-            "production": {
-              "browserTarget": "ism-planif:build:production"
-            },
-            "development": {
-              "browserTarget": "ism-planif:build:development"
-            }
-          },
-          "defaultConfiguration": "development"
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",

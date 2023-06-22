@@ -18,6 +18,11 @@ export class ClasseService  extends ResourceService<ClasseModel>{
   addClasse$ = (classe: ClasseModel) => this.create$(classe);
 
   getAllClasses(){
-    return this.http.get(this.apiUrl.concat("/planification/allClasses"));
+    return this.http.get(this.apiUrl.concat("/planification/allClasses"),{headers:this.constructHeader(this.getToken())});
+  }
+
+  ajoutClasse(classe:ClasseModel){
+    console.log("classe___",classe);      
+    return this.http.post(this.apiUrl.concat("/planification/classe"),classe,{headers:this.constructHeader(this.getToken())});
   }
 }

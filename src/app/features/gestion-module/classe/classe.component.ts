@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {AnneeService} from "../../../data/services/annee.service";
 import {AnneeModel} from "../../../data/types/annee.model";
 import {ClasseService} from "../../../data/services/classe.service";
+import { ClasseModel } from 'src/app/data/types/classe.model';
 
 
 @Component({
@@ -44,7 +45,7 @@ export class ClasseComponent {
 
   }
 
-  ajouterClasse() {
+/*   ajouterClasse() {
     //validation
     if (this.annee != undefined && this.annee != "" && this.annee != null && this.filliere != undefined && this.filliere != "" && this.filliere != null && this.niveau != undefined && this.niveau != "" && this.niveau != null && this.libelle != undefined && this.libelle != "" && this.libelle != null) {
      let anneeScolaire = this.annees.find((annee: any) => annee.id == this.annee);
@@ -67,10 +68,39 @@ export class ClasseComponent {
     } else {
       this.valideReq = true;
     }
+  } */
+
+  construcClasse(anneeScolaire:AnneeModel|undefined  ):ClasseModel{
+      return {libelle: this.libelle,
+        annee_scolaire_id: this.annee,
+        anneeScolaire: anneeScolaire,
+        filiere: this.filliere,
+        niveau: this.niveau}
   }
 
+  ajouterClasse(){
 
-  anneScolairesList() {
+    
+    if (this.annee != undefined && this.annee != "" && this.annee != null && this.filliere != undefined && this.filliere != "" && this.filliere != null && this.niveau != undefined && this.niveau != "" && this.niveau != null && this.libelle != undefined && this.libelle != "" && this.libelle != null) {
+      let anneeScolaire = this.annees.find((annee: any) => annee.id == this.annee);
+      this.classeService.ajoutClasse(this.construcClasse(anneeScolaire)).subscribe((data: any) => {
+        this.libelle = "";
+        this.annee = "";
+        this.filliere = "";
+        this.niveau = "";
+        this.classesList();
+      }, (error: any) => {
+        console.log(error);
+        alert("Erreur lors de l'ajout de la classe")
+      });
+    } else {
+      this.valideReq = true;
+    }
+    }
+  
+
+
+  anneScolairesList():any {
     this.anneeService.getAllAnneeScolaire().subscribe((data: any) => {
       this.annees = data;
     }, (error: any) => {

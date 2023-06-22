@@ -19,8 +19,9 @@ export class AnneeScolaireComponent {
   anneeScolaireUri:string = "/planification/allAnneScolaire";
 
   constructor(private  anneeService: AnneeService) {
-    this.valideReq = false;
+    console.log("token ___" , localStorage.getItem('access_token'));
     this.anneeScolairesList();
+
   }
 
   onTableDataChange(event: any) {
@@ -48,6 +49,7 @@ export class AnneeScolaireComponent {
   ajouterAnnee() {
      if (this.annee != undefined && this.annee != "" && this.annee != null) {
       this.anneeService.addAnneeScolaire({annee: this.annee}).subscribe((data: any) => {
+        console.log(" annee created ... ",data)
         this.annee = "";
         this.anneeScolairesList();
       }, (error: any) => {
